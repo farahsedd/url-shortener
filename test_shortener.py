@@ -1,6 +1,8 @@
 import pytest
 from app import app
 
+print("starting tests...")
+
 @pytest.fixture
 def client():
     with app.test_client() as client:
@@ -24,3 +26,5 @@ def test_redirect_url(client):
 def test_invalid_redirect(client):
     response = client.get('/nonexistent-url')
     assert response.status_code == 404
+
+print("tests done!")
